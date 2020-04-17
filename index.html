@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MovieDB</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css"
+    />
+    <link rel="stylesheet" href="grid.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 62.5%;
+      }
+      body {
+        font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+          "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+        background-color: #e9ebee;
+        color: #222;
+      }
+      .card {
+        perspective: 150rem;
+        -moz-perspective: 150rem;
+        -webkit-perspective: 150rem;
+        position: relative;
+        height: 52rem;
+        margin-bottom: 24px;
+      }
+
+      p {
+        font-size: 1.6rem;
+      }
+
+      .card__side {
+        height: 52rem;
+        transition: all 0.8s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 3px;
+        overflow: hidden;
+        box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.1);
+      }
+
+      .card__side--front {
+        text-align: center;
+        background-color: #fff;
+      }
+
+      .card__side--back {
+        transform: rotateY(180deg);
+        background-color: #fff;
+      }
+
+      .card:hover .card__side--front {
+        transform: rotateY(-180deg);
+      }
+
+      .card:hover .card__side--back {
+        transform: rotateY(0);
+      }
+
+      .card__picture {
+        background: url("https://fakeimg.pl/300/");
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 32rem;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+      }
+      @media (max-width: 854px) {
+        .card__picture {
+          background-size: auto 100%;
+          background-position: center;
+        }
+      }
+
+      .card__cta {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+      }
+
+      .card__bottom {
+        overflow: hidden;
+        width: 100%;
+        height: calc(100% - 32rem);
+        position: relative;
+      }
+
+      .card__title {
+        text-transform: uppercase;
+        font-size: 2rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding: 1rem;
+        margin-top: 2rem;
+        font-weight: bold;
+      }
+
+      .card__scores {
+        display: block;
+        position: absolute;
+        top: 52%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #ff7730;
+        font-size: 6rem;
+        font-weight: 100;
+      }
+
+      .card__cta {
+        height: 100%;
+        padding: 3rem 1rem;
+      }
+
+      .card__btn {
+        text-align: center;
+        margin-top: 3.5rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      .center {
+        display: flex;
+        justify-content: center;
+        margin: 4rem 0;
+      }
+      #input {
+        font-size: 1.5rem;
+        font-family: inherit;
+        color: #333;
+        padding: 1.5rem 2rem;
+        border-radius: 2px;
+        background-color: #fff;
+        border: none;
+        border-bottom: 3px solid transparent;
+        width: 40%;
+        display: block;
+        transition: all 0.3s;
+      }
+      .hero.is-primary.is-bold {
+        background-image: linear-gradient(
+          141deg,
+          #009e6c 0%,
+          #00d1b2 71%,
+          #00e7eb 100%
+        );
+      }
+      .hero-body {
+        padding: 5rem 2rem;
+      }
+      .title {
+        color: #fff;
+        font-size: 4rem;
+        font-weight: 800;
+        line-height: 1.125;
+        font-family: inherit;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="hero is-primary is-bold">
+      <div class="hero-body">
+        <div class="grid wide">
+          <h1 class="title">
+            Movie DB
+            <span class="icon">
+              <i class="fas fa-film"></i>
+            </span>
+          </h1>
+        </div>
+      </div>
+    </section>
+    <div class="center">
+      <input type="text" id="input" />
+    </div>
+    <div class="grid wide">
+      <div class="row">
+        <div class="col c-12 m-6 l-4">
+          <div class="card">
+            <div class="card__side card__side--front">
+              <div class="card__picture">
+                &nbsp;
+              </div>
+              <div class="card__bottom">
+                <p class="card__title">
+                  The Dark Knight
+                </p>
+                <span class="card__scores">84</span>
+              </div>
+            </div>
+            <div class="card__side card__side--back">
+              <div class="card__cta">
+                <p class="card__actors">
+                  Actor : Christian Bale, Heath Ledger, Aaron Eckhart, Michael
+                  Caine
+                </p>
+                <p class="card__dicrector">
+                  Director: "Christopher Nolan"
+                </p>
+                <p class="card__release">Released: "18 Jul 2008"</p>
+
+                <p class="card__genre">Genre: Action, Crime, Drama, Thriller</p>
+                <p class="card__rated">Rated: "PG-13"</p>
+                <p class="card__production">
+                  Production: "Warner Bros. Pictures/Legendary"
+                </p>
+                <p class="card__language">Language: "English, Mandarin"</p>
+                <p class="card__plot">
+                  " When the menace known as the Joker wreaks havoc and chaos on
+                  the people of Gotham, Batman must accept one of the greatest
+                  psychological and physical tests of his ability to fight
+                  injustice. "
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      const web = "http://www.omdbapi.com/";
+      const apikey = "1bb3d6ad";
+
+      const input = document.querySelector("#input");
+      const row = document.querySelector(".row");
+      let list;
+      let film;
+      let TimeId;
+
+      const fetchSearch = async (keyword) => {
+        const response = await axios.get(web, {
+          params: {
+            apikey: apikey,
+            s: keyword,
+          },
+        });
+
+        return response.data.Search;
+      };
+
+      const fetchFilm = async (id) => {
+        const response = await axios.get(web, {
+          params: {
+            apikey: apikey,
+            i: id,
+          },
+        });
+
+        return response.data;
+      };
+
+      const factory = (el, arr) => {
+        const myel = document.createElement(el);
+        arr.forEach((ls) => myel.classList.add(ls));
+        return myel;
+      };
+
+      const makeCardWith = (film) => {
+        const cardPicture = factory("div", ["card__picture"]);
+
+        cardPicture.style.backgroundImage = `url(${film.Poster})`;
+
+        const cardTitle = factory("p", ["card__title"]);
+        cardTitle.innerText = film.Title;
+        const cardScores = factory("span", ["card__scores"]);
+        cardScores.innerHTML =
+          film.Metascore == "N/A" ? "&infin;" : film.Metascore;
+        const cardBottom = factory("div", ["card__bottom"]);
+        cardBottom.appendChild(cardTitle);
+        cardBottom.appendChild(cardScores);
+
+        const cardFront = factory("div", ["card__side", "card__side--front"]);
+        cardFront.appendChild(cardPicture);
+        cardFront.appendChild(cardBottom);
+
+        const cardActors = factory("p", ["card__actors"]);
+        cardActors.innerText = "Actor : " + film.Actors;
+        const cardDirector = factory("p", ["card__director"]);
+        cardDirector.innerText = "Director : " + film.Director;
+        const cardRelease = factory("p", ["card__release"]);
+        cardRelease.innerText = "Released : " + film.Released;
+        const cardGenre = factory("p", ["card__genre"]);
+        cardGenre.innerText = "Genre : " + film.Genre;
+        const cardRated = factory("p", ["card__rated"]);
+        cardRated.innerText = "Rated : " + film.Rated;
+        const cardProduction = factory("p", ["card__production"]);
+        cardProduction.innerText = "Production: " + film.Production;
+        const cardLanguage = factory("p", ["card__language"]);
+        cardLanguage.innerText = "Language : " + film.Language;
+        const cardPlot = factory("p", ["card__plot"]);
+        cardPlot.innerText = `" ${film.Plot}.. "`;
+
+        const cardCta = factory("div", ["card__cta"]);
+        cardCta.appendChild(cardActors);
+        cardCta.appendChild(cardDirector);
+        cardCta.appendChild(cardRelease);
+        cardCta.appendChild(cardGenre);
+        cardCta.appendChild(cardRated);
+        cardCta.appendChild(cardProduction);
+        cardCta.appendChild(cardLanguage);
+        cardCta.appendChild(cardPlot);
+
+        const cardBack = factory("div", ["card__side", "card__side--back"]);
+        cardBack.appendChild(cardCta);
+
+        const card = factory("div", ["card"]);
+        card.appendChild(cardFront);
+        card.appendChild(cardBack);
+
+        return card;
+      };
+
+      const doMagic = async () => {
+        if (input.value) {
+          list = await fetchSearch(input.value);
+          row.innerHTML = "";
+          list.forEach(async (element) => {
+            film = await fetchFilm(element.imdbID);
+            const div = document.createElement("div");
+            const card = makeCardWith(film);
+            div.classList.add("col", "c-12", "m-6", "l-4");
+            div.appendChild(card);
+            row.appendChild(div);
+          });
+        }
+      };
+
+      input.addEventListener("input", function (e) {
+        if (TimeId) {
+          clearTimeout(TimeId);
+        }
+        TimeId = setTimeout(doMagic, 1000);
+      });
+    </script>
+  </body>
+</html>
